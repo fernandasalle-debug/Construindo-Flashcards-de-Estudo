@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards de Estudo - Web Dev</title>
+    <style>
+        /* Estilos Globais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Cabeçalho e Logo */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid #2c3e50;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 28px;
+        }
+
+        /* Contêiner de Flashcards (Flexbox) */
+        .flashcard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Estrutura do Card 3D */
+        .card {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Efeito de Virada no Hover */
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Faces do Card */
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        /* Estilo da Frente */
+        .card-front {
+            background-color: #fff;
+            border: 2px solid #3498db;
+            color: #333;
+        }
+
+        .card-front h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Estilo do Verso */
+        .card-back {
+            background-color: #3498db;
+            color: #fff;
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        .card-back p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Imagens e Ícones (Simulados) */
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .card-image {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 10px;
+        }
+
+        /* Ícones de Progresso */
+        .progress-container {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .progress-icon {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+
+        .progress-icon.completed {
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .progress-icon.partial {
+            background-color: #f1c40f;
+            border-color: #f1c40f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">FLASHCARDS</div>
+        <h1>Flashcards de Estudo</h1>
+    </header>
+
+    <main class="flashcard-container">
+
+        <article class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <span class="tag">Cidadania</span>
+                    <div class="icon" style="background-color: #e74c3c;">?</div>
+                    <h3>Como identificar fake news?</h3>
+                    <div class="progress-container">
+                        <div class="progress-icon completed"></div>
+                        <div class="progress-icon completed"></div>
+                        <div class="progress-icon"></div>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <p>Verifique fontes confiáveis, analise a data, procure erros gramaticais e duvide de títulos sensacionalistas.</p>
+                    <div class="card-image">IMAGEM</div>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <span class="tag">Estr
